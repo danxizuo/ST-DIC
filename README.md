@@ -327,7 +327,3 @@ To install the required dependencies, you can use the following command:
 ```bash
 pip install torch torchvision timm einops numpy scipy pillow opencv-python
 ```
-
-## Conclusion
-
-This codebase provides a comprehensive framework for using Swin Transformers in deformation analysis tasks. By following the provided structure and scripts, users can train and deploy models for displacement and strain estimation efficiently.
