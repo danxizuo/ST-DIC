@@ -101,7 +101,7 @@ def forward_and_save_results(model, dataloader, image_size, patch_size, stride, 
     disp_x_full /= count_full
     disp_y_full /= count_full
 
-    # 保存结果到CSV
+    # save the result as csv file
     # with open(output_csv, mode='w', newline='') as file:
     #     writer = csv.writer(file)
     #     writer.writerow(['Index', 'X', 'Y', 'Disp_X', 'Disp_Y'])
@@ -129,7 +129,7 @@ def apply_filter(data_list, filter_type='gaussian', **kwargs):
         filtered_data_list.append(filtered_data)
     return filtered_data_list
 
-# 叠加位移云图并添加内部颜色标尺
+# overlay the displacement cloudmap to ref images
 def overlay_displacement_on_image_with_internal_colorbar(original_image_path, disp_data, alpha=0.6, output_path=None, region=None, max_disp_value=5):
 
 
@@ -328,7 +328,7 @@ def main():
                     region=region
                 )
 
-
+                # gaussian filter
                 filtered_disp_x, filtered_disp_y = apply_filter(
                     data_list=[disp_x_full, disp_y_full],  # Correct parameter name
                     filter_type='gaussian',
