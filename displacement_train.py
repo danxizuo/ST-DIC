@@ -1,4 +1,3 @@
-from model_dispalcement import SwinTransformerSys
 import os
 import numpy as np
 import torch
@@ -11,6 +10,7 @@ import timm
 import scipy.io as sio
 import scipy
 from timm.models.swin_transformer import SwinTransformer
+from model_dispalcement import SwinTransformerSys
 
 class DeformationDataset(Dataset):
     def __init__(self, original_dir, transformed_dir, displacement_dir, transform=None):
