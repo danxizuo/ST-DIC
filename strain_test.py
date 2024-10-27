@@ -32,7 +32,7 @@ def forward_and_save_results(model, dataloader, image_size, patch_size, stride, 
             def_patch = def_patch.to(device)
             ref_patch = ref_patch.to(device)
 
-            # 分别传递给模型
+          
             output = model(def_patch, ref_patch)
             output = output.squeeze(0).cpu().numpy()
 
@@ -43,7 +43,7 @@ def forward_and_save_results(model, dataloader, image_size, patch_size, stride, 
                     strain_xy[y + j, x + k]+= output[2, j, k]
                     count[y + j, x + k] += 1
 
-    # 避免除以零
+    
     count[count == 0] = 1e-5
     strain_x /= count
     strain_y /= count
@@ -164,7 +164,7 @@ def plot_displacement(disp_x, disp_y, image_size, title):
     plt.show()
 
 if __name__ == '__main__':
-    def_image_path = 'D:\OneDrive - ahu.edu.cn\-----A论文\-----CorrelationNet\DICchallenge\Star6StrainNoisy\Star6StrainNoisy/DIC_Challenge_Star_Strain_Noise_Def.tif'
+    def_image_path = 'D:\OneDrive - ahu.edu.cn\-----A论文\-----CorrelationNet\DICchallenge\Star6StrainNoisy\Star6StrainNoisy/DIC_Challenge_Star_Strain_Noise_Def.tif' # Convert this file path to a relative path or to the image path you need to verify.
     ref_image_path = 'D:\OneDrive - ahu.edu.cn\-----A论文\-----CorrelationNet\DICchallenge\Star6StrainNoisy\Star6StrainNoisy/DIC_Challenge_Star_Strain_Noise_Ref.tif'
     # def_image_path = "D:\OneDrive - ahu.edu.cn\-----A论文\-----CorrelationNet\DICchallenge\Star3NoNoiseStrain\DIC_Challenge_Wave_Deformed_Strain.tif"
     # ref_image_path = "D:\OneDrive - ahu.edu.cn\-----A论文\-----CorrelationNet\DICchallenge\Star3NoNoiseStrain\DIC_Challenge_Wave_Reference_Strain.tif"
@@ -178,7 +178,7 @@ if __name__ == '__main__':
     dataloader = DataLoader(dataset, batch_size=1, shuffle=False)
 
     model = SwinTransformerSys()
-    model_path = r"E:\SwinT_UNET_data\strain_pth\V11_sobel_strain_best_model.pth" # Swin_Unet_strain_2262
+    model_path = r"E:\SwinT_UNET_data\strain_pth\V11_sobel_strain_best_model.pth" # load the pretrained pth
     model.load_state_dict(torch.load(model_path))
     output_csv = 'predicted_displacements.csv'
     disp_x, disp_y, strain_xy = forward_and_save_results(model, dataloader, image_size, patch_size, stride, output_csv,
