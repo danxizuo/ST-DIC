@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 #from Swin_Unet_V13_interpolation import SwinTransformerSys
 #from Swin_Unet_V11 import SwinTransformerSys
 # from Swin_Unet_V13_skipc import SwinTransformerSys
-from Swin_Unet_V11 import SwinTransformerSys
+from displacement_model import SwinTransformerSys
 # 自定义数据集类
 class ImagePatchDataset(Dataset):
     def __init__(self, def_image_path, ref_image_path, patch_size=128, stride=120, transform=None):
